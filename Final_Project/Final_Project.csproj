@@ -1,15 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>d009a6f9-6499-49b3-8c25-013c27534dc9</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Course\" />
-    <Folder Include="Views\ProjectImage\" />
-    <Folder Include="Views\Project\" />
+    <PackageReference Include="Npgsql" Version="10.0.3" />
   </ItemGroup>
 
 </Project>

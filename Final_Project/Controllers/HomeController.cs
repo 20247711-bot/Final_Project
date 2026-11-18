@@ -1,8 +1,8 @@
-using Final_Project.Models;
+using Portfolio.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Final_Project.Controllers
+namespace library.Controllers
 {
     public class HomeController : Controller
     {

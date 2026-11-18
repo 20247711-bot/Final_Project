@@ -1,0 +1,24 @@
+﻿@model Portfolio.Models.ProjectImage
+
+<h1>Delete Project Image</h1>
+
+<h3>Are you sure you want to delete this image?</h3>
+
+<div>
+    <p><strong>Image ID:</strong> @Model.ImageId</p>
+    <p><strong>Project ID:</strong> @Model.ProjectId</p>
+
+    <img src="@Model.ImageUrl" alt="Project Image" width="200" />
+
+    <p>
+        <strong>Image URL:</strong>
+        @Model.ImageUrl
+    </p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="id" value="@Model.ImageId" />
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

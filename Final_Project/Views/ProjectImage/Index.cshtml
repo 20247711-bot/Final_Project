@@ -1,0 +1,41 @@
+﻿@model List<Portfolio.Models.ProjectImage>
+
+<h1>Project Images</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add Image</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Image ID</th>
+            <th>Project ID</th>
+            <th>Image</th>
+            <th>Image URL</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var image in Model)
+        {
+            <tr>
+                <td>@image.ImageId</td>
+                <td>@image.ProjectId</td>
+                <td>
+                    <img src="@image.ImageUrl"
+                         alt="Project Image"
+                         width="120" />
+                </td>
+                <td>
+                    <a href="@image.ImageUrl" target="_blank">View Image</a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@image.ImageId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@image.ImageId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

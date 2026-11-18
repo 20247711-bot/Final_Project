@@ -1,0 +1,35 @@
+﻿@model List<Portfolio.Models.Course>
+
+<h1>Courses</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add Course</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Course Code</th>
+            <th>Course Name</th>
+            <th>Description</th>
+            <th>Course Year</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.CourseCode</td>
+                <td>@course.CourseName</td>
+                <td>@course.Description</td>
+                <td>@course.CourseYear</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@course.CourseId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@course.CourseId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
