@@ -1,7 +1,7 @@
-﻿using Portfolio.Models;
+﻿using Final_Project.Models;
 using Npgsql;
 
-namespace Portfolio.Data;
+namespace Final_Project.Data;
 
 public class ProjectImageRepository
 {

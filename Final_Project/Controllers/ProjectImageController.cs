@@ -1,9 +1,11 @@
-﻿using Portfolio.Data;
-using Portfolio.Models;
+﻿using Final_Project.Data;
+using Final_Project.Models;
 using Microsoft.AspNetCore.Mvc;
+using Final_Project.Security;
 
-namespace Portfolio.Controllers;
+namespace Final_Project.Controllers;
 
+[AuthorizeAdmin]
 public class ProjectImagesController : Controller
 {
     private readonly ProjectImageRepository _images;

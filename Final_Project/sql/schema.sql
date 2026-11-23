@@ -15,7 +15,7 @@ CREATE TABLE portfolio.project (
     course_id INTEGER NOT NULL,
     title VARCHAR(150) NOT NULL,
     description VARCHAR(1000),
-    video_url VARCHAR(500),
+    youtube_url VARCHAR(500),
 
     CONSTRAINT fk_project_course
         FOREIGN KEY (course_id)

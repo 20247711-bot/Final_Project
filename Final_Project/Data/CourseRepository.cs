@@ -1,7 +1,7 @@
-﻿using Portfolio.Models;
+﻿using Final_Project.Models;
 using Npgsql;
 
-namespace Portfolio.Data;
+namespace Final_Project.Data;
 
 public class CourseRepository
 {
@@ -34,7 +34,7 @@ public class CourseRepository
         await using var command = _dataSource.CreateCommand(sql);
         await using var reader = await command.ExecuteReaderAsync();
 
-        while (await reader.ReadAsync())        
+        while (await reader.ReadAsync())
         {
             course.Add(ReadCourse(reader));
         }
@@ -53,16 +53,16 @@ public class CourseRepository
         command.Parameters.AddWithValue("description", (object?)course.Description ?? DBNull.Value);
         command.Parameters.AddWithValue("course_year", (object?)course.CourseYear ?? DBNull.Value);
 
-        await command.ExecuteNonQueryAsync();           
+        await command.ExecuteNonQueryAsync();
     }
 
-    
+
     public async Task<Course?> GetByIdAsync(long id)
     {
         const string sql = "SELECT course_id, course_code, course_name, description, course_year FROM portfolio.course WHERE course_id = @id;";
 
         await using var command = _dataSource.CreateCommand(sql);
-        command.Parameters.AddWithValue("id", id);      
+        command.Parameters.AddWithValue("id", id);
 
         await using var reader = await command.ExecuteReaderAsync();
         return await reader.ReadAsync() ? ReadCourse(reader) : null;

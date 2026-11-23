@@ -1,9 +1,11 @@
-﻿using Portfolio.Data;
-using Portfolio.Models;
+﻿using Final_Project.Data;
+using Final_Project.Models;
+using Final_Project.Security;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Portfolio.Controllers;
+namespace Final_Project.Controllers;
 
+[AuthorizeAdmin]
 public class CoursesController : Controller
 {
     private readonly CourseRepository _courses;

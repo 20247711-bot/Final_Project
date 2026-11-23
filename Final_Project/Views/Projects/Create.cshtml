@@ -1,0 +1,80 @@
+﻿@model Final_Project.Models.ProjectFormViewModel
+
+@{
+    ViewData["Title"] = "Add Project";
+}
+
+<div class="admin-page">
+
+    <div class="admin-heading">
+        <span class="admin-label">ADMINISTRATION</span>
+        <h1>Add Project</h1>
+        <p>Add a new project to your portfolio.</p>
+    </div>
+
+    <div class="admin-form-card">
+        <h4>Project Information</h4>
+        <p class="form-description">Enter the details of your project below.</p>
+
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="CourseId" class="form-label">
+                    Course ID
+                </label>
+                <input asp-for="CourseId" class="form-control"
+                       placeholder="Enter the associated course ID" />
+                <span asp-validation-for="CourseId"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">
+                    Project Title
+                </label>
+                <input asp-for="Title" class="form-control"
+                       placeholder="Enter project title" />
+                <span asp-validation-for="Title"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">
+                    Description
+                </label>
+                <textarea asp-for="Description" class="form-control"
+                          rows="4"
+                          placeholder="Enter project description"></textarea>
+                <span asp-validation-for="Description"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="VideoUrl" class="form-label">
+                    YouTube URL
+                </label>
+                <input asp-for="VideoUrl" class="form-control"
+                       placeholder="Enter YouTube URL (optional)" />
+                <span asp-validation-for="VideoUrl"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Project Image URL</label>
+                <input name="ImageUrl" class="form-control"
+                       placeholder="Paste your project image URL" />
+            </div>
+
+            <div class="form-actions">
+                <a asp-action="Index" class="btn btn-light">Cancel</a>
+                <button type="submit" class="btn btn-primary-custom">
+                    Save Project
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

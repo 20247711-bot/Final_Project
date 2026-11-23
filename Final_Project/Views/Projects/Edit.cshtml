@@ -1,0 +1,8 @@
+﻿@model Final_Project.Models.ProjectFormViewModel
+@{
+    ViewData["Title"] = "Edit project";
+}
+<div class="admin-page narrow"><div class="eyebrow">PROJECT MANAGEMENT</div><h1>Edit project</h1><form asp-action="Edit" method="post" class="form-panel"><input type="hidden" asp-for="ProjectId" /><partial name="_ProjectFields" model="Model" /><button class="btn btn-accent">Save changes</button> <a asp-action="Index" class="btn btn-outline-light">Cancel</a></form></div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

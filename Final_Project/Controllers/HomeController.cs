@@ -1,25 +1,15 @@
-using Portfolio.Models;
+using Final_Project.Data;
+using Final_Project.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+namespace Final_Project.Controllers;
 
-namespace library.Controllers
+public class HomeController : Controller
 {
-    public class HomeController : Controller
-    {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-    }
+    private readonly ProjectRepository _projects; private readonly CourseRepository _courses;
+    public HomeController(ProjectRepository projects, CourseRepository courses) { _projects = projects; _courses = courses; }
+    public async Task<IActionResult> Index() => View(new PortfolioViewModel { Projects = await _projects.GetAllAsync(), Courses = await _courses.GetAllAsync() });
+    public IActionResult Privacy() => View();
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 }

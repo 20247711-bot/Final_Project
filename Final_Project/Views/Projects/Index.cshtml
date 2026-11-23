@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Final_Project.Models.Project>
+
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<div class="admin-page">
+
+    <div class="admin-heading">
+        <span class="admin-label">ADMINISTRATION</span>
+        <h1>Projects</h1>
+        <p>Manage the projects displayed on your portfolio.</p>
+    </div>
+
+    <div class="admin-content">
+        <div class="admin-content-header">
+            <div>
+                <h4>Project Management</h4>
+                <p>Manage your portfolio projects.</p>
+            </div>
+
+            <a asp-action="Create" class="btn btn-primary-custom">
+                + Add Project
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table admin-table">
+                <thead>
+                    <tr>
+                        <th>Project ID</th>
+                        <th>Course ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>YouTube URL</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var project in Model)
+                        {
+                            <tr>
+                                <td>@project.ProjectId</td>
+                                <td>@project.CourseId</td>
+                                <td>@project.Title</td>
+                                <td>@project.Description</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(project.VideoUrl))
+                                    {
+                                        <a href="@project.VideoUrl"
+                                           target="_blank"
+                                           rel="noopener noreferrer">
+                                            View Video
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">None</span>
+                                    }
+                                </td>
+                                <td class="text-end">
+                                    <a asp-action="Edit"
+                                       asp-route-id="@project.ProjectId"
+                                       class="btn btn-sm btn-outline-primary">
+                                        Edit
+                                    </a>
+                                    <a asp-action="Delete"
+                                       asp-route-id="@project.ProjectId"
+                                       class="btn btn-sm btn-outline-danger">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="empty-table">
+                                No projects have been added yet.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

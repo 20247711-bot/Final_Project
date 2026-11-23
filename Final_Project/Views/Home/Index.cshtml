@@ -1,8 +1,113 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model Final_Project.Models.PortfolioViewModel
+
+@{
+    ViewData["Title"] = "Portfolio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container py-5">
+
+    <!-- Introduction -->
+    <section class="portfolio-intro mb-5">
+        <p class="text-uppercase text-secondary small fw-semibold mb-3">
+            My Portfolio
+        </p>
+
+
+        <p class="lead text-secondary">
+            A collection of my projects, experiments, and things I've built
+            while learning and creating.
+        </p>
+    </section>
+
+    <hr class="my-5" />
+
+    <!-- Projects -->
+    <section id="projects">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="fw-bold mb-1">Projects</h2>
+                <p class="text-secondary mb-0">
+                    A collection of my work.
+                </p>
+            </div>
+
+            <span class="text-secondary">
+                @(Model.Projects?.Count ?? 0) Projects
+            </span>
+        </div>
+
+        @if (Model.Projects != null && Model.Projects.Any())
+        {
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+                @foreach (var project in Model.Projects)
+                {
+                    var image = project.Images?.FirstOrDefault()?.ImageUrl;
+
+                    <div class="col">
+                        <div class="card h-100 shadow-sm">
+
+                            @if (!string.IsNullOrWhiteSpace(image))
+                            {
+                                <img src="@image"
+                                     class="card-img-top project-image"
+                                     alt="@project.Title" />
+                            }
+                            else
+                            {
+                                <div class="project-placeholder">
+                                    No project image
+                                </div>
+                            }
+
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">
+                                    @project.Title
+                                </h5>
+
+                                <p class="card-text text-secondary">
+                                    @project.Description
+                                </p>
+                            </div>
+
+                            @if (!string.IsNullOrWhiteSpace(project.VideoUrl))
+                            {
+                                <div class="card-footer bg-white">
+                                    <a href="@project.VideoUrl"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="btn btn-outline-dark btn-sm">
+                                        View Project
+                                    </a>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+        }
+        else
+        {
+            <p class="text-secondary">
+                No projects have been added yet.
+            </p>
+        }
+
+    </section>
+
+    <hr class="my-5" />
+
+    <!-- About -->
+    <section class="pb-4">
+        <h2 class="fw-bold mb-3">About this portfolio</h2>
+
+        <p class="text-secondary">
+            Each project represents something I've learned and built
+            throughout my journey as a student developer.
+        </p>
+    </section>
+
 </div>

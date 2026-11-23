@@ -1,0 +1,74 @@
+﻿@model Final_Project.Models.Course
+
+@{
+    ViewData["Title"] = "Add Course";
+}
+
+<div class="admin-page">
+
+    <div class="admin-heading">
+        <span class="admin-label">ADMINISTRATION</span>
+        <h1>Add Course</h1>
+        <p>Add a new course to your portfolio.</p>
+    </div>
+
+    <div class="admin-form-card">
+        <h4>Course Information</h4>
+        <p class="form-description">Enter the details of your course below.</p>
+
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="CourseName" class="form-label">
+                    Course Name
+                </label>
+                <input asp-for="CourseName" class="form-control"
+                       placeholder="Enter course name" />
+                <span asp-validation-for="CourseName"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CourseCode" class="form-label">
+                    Course Code
+                </label>
+                <input asp-for="CourseCode" class="form-control"
+                       placeholder="Enter course code" />
+                <span asp-validation-for="CourseCode"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">
+                    Description
+                </label>
+                <textarea asp-for="Description" class="form-control"
+                          rows="4"
+                          placeholder="Enter course description"></textarea>
+                <span asp-validation-for="Description"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="CourseYear" class="form-label">
+                    Course Year
+                </label>
+                <input asp-for="CourseYear" class="form-control"
+                       placeholder="Enter course year" />
+                <span asp-validation-for="CourseYear"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="form-actions">
+                <a asp-action="Index" class="btn btn-light">Cancel</a>
+                <button type="submit" class="btn btn-primary-custom">
+                    Save Course
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

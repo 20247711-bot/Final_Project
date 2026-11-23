@@ -1,14 +1,14 @@
-﻿using Portfolio.Data;
-using Portfolio.Models;
+﻿using Final_Project.Data;
+using Final_Project.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Portfolio.Controllers;
+namespace Final_Project.Controllers;
 
-public class ProjectsController : Controller
+public class ProjectController : Controller
 {
     private readonly ProjectRepository _projects;
 
-    public ProjectsController(ProjectRepository projects)
+    public ProjectController(ProjectRepository projects)
     {
         _projects = projects;
     }

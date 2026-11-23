@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Final_Project.Models.Course>
+
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<div class="admin-page">
+
+    <div class="admin-heading">
+        <span class="admin-label">ADMINISTRATION</span>
+        <h1>Courses</h1>
+        <p>Organize the courses connected to your projects.</p>
+    </div>
+
+    <div class="admin-content">
+        <div class="admin-content-header">
+            <div>
+                <h4>Course Management</h4>
+                <p>Manage your course records.</p>
+            </div>
+
+            <a asp-action="Create" class="btn btn-primary-custom">
+                + Add Course
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table admin-table">
+                <thead>
+                    <tr>
+                        <th>Course ID</th>
+                        <th>Course Name</th>
+                        <th>Course Code</th>
+                        <th>Description</th>
+                        <th>Course Year</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var course in Model)
+                        {
+                            <tr>
+                                <td>@course.CourseId</td>
+                                <td>@course.CourseName</td>
+                                <td>@course.CourseCode</td>
+                                <td>@course.Description</td>
+                                <td>@course.CourseYear</td>
+                                <td class="text-end">
+                                    <a asp-action="Edit"
+                                       asp-route-id="@course.CourseId"
+                                       class="btn btn-sm btn-outline-primary">
+                                        Edit
+                                    </a>
+                                    <a asp-action="Delete"
+                                       asp-route-id="@course.CourseId"
+                                       class="btn btn-sm btn-outline-danger">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="empty-table">
+                                No courses have been added yet.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
