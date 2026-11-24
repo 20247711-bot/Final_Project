@@ -2,4 +2,23 @@
 @{
     ViewData["Title"] = "Delete course";
 }
-<div class="admin-page narrow"><div class="eyebrow">COURSE MANAGEMENT</div><h1>Delete course?</h1><div class="form-panel"><p>Delete <strong>@Model.CourseCode — @Model.CourseName</strong>? This may also delete projects linked to this course.</p><form asp-action="Delete" method="post"><input type="hidden" name="id" value="@Model.CourseId" /><button class="btn btn-danger">Delete course</button> <a asp-action="Index" class="btn btn-outline-light">Cancel</a></form></div></div>
+<div class="admin-page narrow">
+    <div class="eyebrow">
+        COURSE MANAGEMENT
+    </div>
+
+    <h1>Delete course?</h1>
+    
+    <div class="form-panel">
+        <p>Delete <strong>@Model.CourseCode — @Model.CourseName</strong>? This may also delete projects linked to this course.</p>
+        <form asp-action="Delete" method="post">
+            <input type="hidden" name="id" value="@Model.CourseId" />
+            <button class="btn btn-danger">
+                Delete course
+            </button> 
+            <a asp-action="Index" class="btn btn-outline-light">
+                Cancel
+            </a>
+            </form>
+    </div>
+</div>

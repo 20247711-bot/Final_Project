@@ -7,29 +7,36 @@ body {
 
 /* NAVBAR */
 .navbar {
-    background-color: #e9ecef !important;
-    border-bottom: 1px solid #dee2e6;
+    background-color: #495057 !important;
+    border-bottom: 1px solid #495057;
 }
 
 .navbar-brand {
-    color: #212529 !important;
+    color: #ffffff !important;
     font-weight: 600;
 }
 
 .nav-link {
-    color: #495057 !important;
+    color: #dee2e6 !important;
 }
 
     .nav-link:hover {
-        color: #000000 !important;
+        color: #3867a8 !important;
     }
 
 /* STUDENT DEVELOPER LABEL */
 .portfolio-intro .text-uppercase {
-    color: #3867a8 !important;
-    font-size: 13px;
+    color: #212529 !important;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 1.5px;
+}
+.portfolio-intro {
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 28px 30px;
+    margin-bottom: 25px;
 }
 
 /* MAIN HEADING */
